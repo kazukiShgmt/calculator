@@ -1,0 +1,98 @@
+<!DOCtype html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>Calculator</title>
+		<style>
+			form{
+				text-align: center;
+				margin-top: 30px;
+			}
+	
+			input[type="button"] {
+				width: 65px;
+				height: 65px;
+			}
+	
+			input[type="text"] {
+				width: 260px;
+				height: 30px;
+				font-size: 20px;
+				padding: 7px;
+				letter-spacing: 1px;
+			}
+		</style>
+	</head>
+	
+<!-- 
+	　＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+	 　ここから上は変更しないでください。 
+	 	＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝
+-->
+
+	<body>
+		<form name="calculator">
+			<input type="text" name="screen">
+			<p>
+				<input type="button" onclick="pushButton('7')" value="７">
+				<input type="button" onclick="pushButton('8')" value="８">
+				<input type="button" onclick="pushButton('9')" value="９">
+				<input type="button" onclick="pushButton('/')" value="／">
+			</p>
+			<p>
+				<input type="button" onclick="pushButton('4')" value="４">
+				<input type="button" onclick="pushButton('5')" value="５">
+				<input type="button" onclick="pushButton('6')" value="６">
+				<input type="button" onclick="pushButton('*')" value="＊">
+			</p>
+			<p>
+				<input type="button" onclick="pushButton('1')" value="１">
+				<input type="button" onclick="pushButton('2')" value="２">
+				<input type="button" onclick="pushButton('3')" value="３">
+				<input type="button" onclick="pushButton('-')" value="－">
+			</p>
+			<p>
+				<input type="button" onclick="pushButton('0')" value="０">
+				<input type="button" onclick="pushButton('C')" value="Ｃ">
+				<input type="button" onclick="pushButton('=')" value="＝">
+				<input type="button" onclick="pushButton('+')" value="＋">
+			</p>
+		</form>
+
+		<script>
+			// ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+			// ↓↓↓↓↓↓ ここへプログラムを記述してください。↓↓↓↓↓↓
+			// 必要であればbodyタグに追記を行ってください。
+
+			var output = "";
+
+			function pushButton(val) { // val: 押されたボタンのvalueに対応する値を受け取る
+				switch (val) {
+					case 'C': // クリア
+						output = "";
+						break;
+					case '=': // 計算結果を出力
+						output = calculation(output);
+						break;
+					default: // 値を更新
+						output += val;
+				}
+				// 電卓のスクリーン表示を更新
+				document.calculator.screen.value = output;
+			}
+
+			// ↑↑↑↑↑↑ ここへプログラムを記述してください。↑↑↑↑↑↑
+			// ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+
+			// 引数に計算式を渡すと計算結果を返す関数
+			// 計算結果を表示されるときはこの関数を使用してください
+			// ※この関数の意味は理解する必要はありません
+			// ※この関数は変更しないでください。
+			function calculation(val){
+				var res = Function('return ('+val+');')();
+				return res;
+			}
+
+		</script>
+	</body>
+</html>
